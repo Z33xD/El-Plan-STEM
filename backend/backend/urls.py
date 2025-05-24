@@ -18,11 +18,14 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-from . import views
+from core import views
+from explorer import views
+from ml_models import views
+from chatbot import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home,name = 'home'),
+    path('', include('core.urls')),
     path('core/',include('core.urls')),
     path('chatbot/', include('chatbot.urls')),
     path('explorer/', include('explorer.urls')),
