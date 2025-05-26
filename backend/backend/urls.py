@@ -26,10 +26,9 @@ from chatbot import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
-    path('core/',include('core.urls')),
-    path('chatbot/', include('chatbot.urls')),
-    path('explorer/', include('explorer.urls')),
-    path('ml/', include('ml_models.urls')),
+    path('', include('chatbot.urls')),
+    path('', include('ml_models.urls')),
+    path('', include('explorer.urls')),
 ]
 
 if settings.DEBUG:

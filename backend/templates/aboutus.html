@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f7;
+      color: #1d1d1f;
+    }
+
+    header {
+      padding: 1rem 2rem;
+      background-color: #fff;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 2rem 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      margin: 0.5rem 0;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Meet Our Team</header>
+
+  <div class="team-container">
+    <div class="card" onclick="window.location.href='https://person1-website.com'">
+      <img src="https://via.placeholder.com/100" alt="Person 1">
+      <h3>Person 1</h3>
+      <p>Lead Developer</p>
+    </div>
+
+    <div class="card" onclick="window.location.href='https://person2-website.com'">
+      <img src="https://via.placeholder.com/100" alt="Person 2">
+      <h3>Person 2</h3>
+      <p>ML Engineer</p>
+    </div>
+
+    <div class="card" onclick="window.location.href='https://person3-website.com'">
+      <img src="https://via.placeholder.com/100" alt="Person 3">
+      <h3>Person 3</h3>
+      <p>UI/UX Designer</p>
+    </div>
+
+    <div class="card" onclick="window.location.href='https://person4-website.com'">
+      <img src="https://via.placeholder.com/100" alt="Person 4">
+      <h3>Person 4</h3>
+      <p>Project Manager</p>
+    </div>
+  </div>
+
+</body>
+</html>
