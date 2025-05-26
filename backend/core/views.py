@@ -7,6 +7,5 @@ def home(request):
 def aboutus(request):
     return render(request,'aboutus.html',{"name":'about us'})
 
-def aboutproject(request):
-    return render(request,'aboutproject.html',{"name":'about project'})
+
 
