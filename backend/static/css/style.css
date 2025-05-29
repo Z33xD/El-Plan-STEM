@@ -93,14 +93,6 @@ nav a {
     margin: auto;
 }
 
-footer {
-    background-color: #f2f2f2;
-    padding: 2rem;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #6e6e73;
-}
-
 .button {
   --bg: #000;
   --hover-bg: #A7C7E7;
@@ -139,6 +131,7 @@ footer {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  position: relative;
 }
 
 .card:active {
@@ -156,7 +149,7 @@ footer {
   margin-bottom: 10px;
   display: block;
   border-bottom: 2px solid #000;
-  width: 50%; /* or any other percentage or pixel value */
+  width: 50%; 
 }
 .card-subtitle {
   font-size: 18px;
@@ -166,6 +159,7 @@ footer {
   padding-top: 15px;
   padding-bottom: 30px;
 }
+
 .card-button {
   display: flex;
   flex-direction: column;
@@ -467,4 +461,99 @@ hr {
 
 .social-icon:hover img {
   transform: scale(1.2);
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-window {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 3px solid #000;
+}
+
+.subtopic-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+#modalTitle {
+  color: black;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.sub-btn {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 5px 5px 0 #000;
+  transition: all 0.2s ease;
+  gap: 20px;
+}
+
+.sub-btn:hover {
+  background-color: #A7C7E7;
+  border: 2px solid black;
+}
+
+.sub-btn:active {
+  animation: shake 0.5s ease-in-out;
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+.sub-btn.coming-soon {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  border: 2px solid transparent;
+  box-shadow: none;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.sub-btn.coming-soon:hover {
+  background-color: #ccc;
+  transform: none;
+  border: 2px solid transparent;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
