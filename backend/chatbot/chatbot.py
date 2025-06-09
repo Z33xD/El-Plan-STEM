@@ -48,28 +48,36 @@ If they are incorrect, explain the right answer clearly using F1 analogies that 
 ''',
 )
 
+# Initialize chat session
+chat_session = model.start_chat(history=[])
 
+def get_chat_response(user_input):
+    """
+    Get a response from the chatbot for the given user input.
+    """
+    try:
+        response = chat_session.send_message(user_input)
+        model_response = response.text
+        
+        # Update chat history
+        chat_session.history.append({"role": "user", "parts": [user_input]})
+        chat_session.history.append({"role": "model", "parts": [model_response]})
+        
+        return model_response
+    except Exception as e:
+        return f"Error: {str(e)}"
 
-chat_session = model.start_chat(
-    history=[]
-)
-
-print("Bot: Hello, how can I help you?")
-print()
-#text_to_speech("Hello, how can I help you?")
-
-while True:
-
-    user_input = input("You: ")
+# Only run the terminal interface if this file is run directly
+if __name__ == "__main__":
+    print("Bot: Hello, how can I help you?")
     print()
+    #text_to_speech("Hello, how can I help you?")
 
-    response = chat_session.send_message(user_input)
+    while True:
+        user_input = input("You: ")
+        print()
 
-    model_response = response.text
-
-    print(f'Bot: {model_response}')
-    print()
-    #text_to_speech(model_response)
-
-    chat_session.history.append({"role": "user", "parts": [user_input]})
-    chat_session.history.append({"role": "model", "parts": [model_response]})
+        response = get_chat_response(user_input)
+        print(f'Bot: {response}')
+        print()
+        #text_to_speech(response)
