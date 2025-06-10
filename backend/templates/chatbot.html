@@ -33,17 +33,60 @@
         </nav>
     </div>
 
-    <div class="chat-container">
-        <div id="chat-window" class="container-fluid"></div>
+    <div class="main-container">
+    <!-- Sidebar with Tabs -->
+    <div class="side-panel">
+        <ul class="nav nav-tabs" id="sideTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button" role="tab">Notes</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="graph-tab" data-bs-toggle="tab" data-bs-target="#graph" type="button" role="tab">Graph</button>
+            </li>
+            <li class="nav-item d-md-none" role="presentation">
+                <button class="nav-link" id="chatbot-tab" data-bs-toggle="tab" data-bs-target="#chatMobileTrigger" type="button" role="tab">Chatbot</button>
+            </li>
+        </ul>
 
-        <div class="input-bar-wrapper">
-            <div class="input-container">
-            <input id="user-input" class="input" type="text" placeholder="Message Chatbot..." onkeydown="handleKey(event)" />
+        <div class="tab-content" id="sideTabContent">
+            <div class="tab-pane fade show active" id="notes" role="tabpanel">
+                <div class="notes-wrapper">
+                    <div id="noteArea" class="notes-area" contenteditable="true">
+                        Type notes or paste any images here...
+                    </div>
+                </div>
+                <button class="export-button" onclick="exportPDF()">Export Notes as PDF</button>
             </div>
+
+            <div class="tab-pane fade graph-wrapper" id="graph" role="tabpanel">
+                <!-- Desmos -->
+                <div id="calculator" style="width: 100%; height: 600px;"></div>
+            </div>
+
+            <div class="tab-pane fade" id="chatMobileTrigger" role="tabpanel"></div>
         </div>
     </div>
-    
+
+    <!-- Shared chatbot wrapper for both desktop and mobile scales -->
+    <div id="chat-wrapper" class="chat-panel">
+        <div class="chat-container">
+        <div id="chat-window" class="container-fluid">
+            <div id="chat-placeholder" class="chat-placeholder">
+                Lights out, and away we go, hm?
+            </div>
+        </div>
+        <div class="input-bar-wrapper">
+            <div class="input-container">
+            <input autocomplete="off" id="user-input" class="input" type="text" placeholder="Message Chatbot..." onkeydown="handleKey(event)" />
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://www.desmos.com/api/v1.11/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
     <script src="../static/js/chatbot.js"></script>
 </body>
 </html>
