@@ -21,7 +21,11 @@ function addMessage(text, className, isBot = false) {
 
     const msg = document.createElement('div');
     msg.className = 'message ' + (isBot ? 'bot-message' : 'user-message');
-    msg.textContent = text;
+    if (isBot) {
+        msg.innerHTML = DOMPurify.sanitize(marked.parse(text));
+    } else {
+        msg.textContent = text;
+    }
 
     wrapper.appendChild(msg);
     chatWindow.appendChild(wrapper);
