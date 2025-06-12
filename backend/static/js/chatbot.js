@@ -32,12 +32,37 @@ function addMessage(text, className, isBot = false) {
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
+// Typing effect
+let typingIndicator;
+
+function showTypingIndicator() {
+    typingIndicator = document.createElement('div');
+    typingIndicator.className = 'message-wrapper bot';
+    typingIndicator.innerHTML = `
+        <img class="bot-avatar" src="https://i.pinimg.com/236x/9e/c4/a5/9ec4a54f57a449e2442dee76f35109d5.jpg" alt="Bot Avatar">
+        <div class="typing-indicator">
+            <span></span><span></span><span></span>
+        </div>
+    `;
+    chatWindow.appendChild(typingIndicator);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+
+function removeTypingIndicator() {
+    if (typingIndicator && typingIndicator.parentNode) {
+        typingIndicator.parentNode.removeChild(typingIndicator);
+    }
+}
+
+// Sending a message
 async function sendMessage() {
     const message = input.value.trim();
     if (!message) return;
 
     addMessage(message, 'user', false);
     input.value = "";
+
+    showTypingIndicator();
 
     try {
         const formData = new FormData();
@@ -48,6 +73,8 @@ async function sendMessage() {
             body: formData
         });
 
+        removeTypingIndicator();
+
         if (!res.ok) {
             throw new Error('Network response was not ok');
         }
@@ -55,6 +82,7 @@ async function sendMessage() {
         const data = await res.json();
         addMessage(data.response, 'bot', true);
     } catch (err) {
+        removeTypingIndicator();
         addMessage("Error connecting to server. Please try again.", 'bot', true);
         console.error('Error:', err);
     }
