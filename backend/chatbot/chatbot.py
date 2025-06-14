@@ -1,10 +1,10 @@
 import os
 import random
-import google.generativeai as genai #
+import google.generativeai as genai
+from google.generativeai.generative_models import GenerativeModel
 from pymongo import MongoClient 
 from dotenv import load_dotenv  
-from sentence_transformers import SentenceTransformer 
-import numpy as np 
+from sentence_transformers import SentenceTransformer
 
 # Load environment variables
 load_dotenv()
@@ -131,15 +131,11 @@ def build_retrieved_data(source_type):
             if not circuit or "length" not in circuit or "name" not in circuit:
                 return None, None 
             lap_time_sec = doc["milliseconds"] / 1000
-            #length_km = circuit["length"]
-            #speed_kmh = length_km / (lap_time_sec / 3600)
             return {
                 "type": "lap_times",
                 "driverId": doc["driverId"],
                 "lap_time_sec": lap_time_sec,
                 "circuit": circuit["name"],
-                #"circuit_length_km": length_km,
-                #"speed_kmh": round(speed_kmh, 2)
             }, None
 
         elif source_type == "drivers":
@@ -164,6 +160,24 @@ def build_retrieved_data(source_type):
     except Exception as e:
         print(f"Error retrieving {source_type} data: {e}")
         return None, None
+    
+def reset_chat_session(system_instruction):
+    """
+    Resets the model and chat session using a new system instruction.
+    Useful when user switches subtopic.
+    """
+    global model, chat_session, custom_history
+    import google.generativeai as genai
+    from .gemini_config import GENERATION_CONFIG, SAFETY_SETTINGS
+
+    model = genai.GenerativeModel( # type: ignore
+        model_name="gemini-1.5-flash",
+        system_instruction=system_instruction,
+        generation_config=GENERATION_CONFIG, # type: ignore
+        safety_settings=SAFETY_SETTINGS
+    )
+    chat_session = model.start_chat(history=[])
+    custom_history = []  
 
 if __name__ == "__main__":
     print("Bot: Ready to ask a science question based on real F1 data!\n")

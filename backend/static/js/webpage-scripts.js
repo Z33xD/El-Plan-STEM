@@ -4,15 +4,15 @@ const subtopicButtons = document.getElementById("subtopicButtons")
 
 const subjectData = {
     "Mathematics": [
-        { label: "Algebra" }, 
-        { label: "Statistics" }, 
-        { label: "Probability" }, 
-        { label: "Graphs", comingSoon: true  }
+        { label: "algebra" }, 
+        { label: "statistics" }, 
+        { label: "probability" }, 
+        { label: "graphs", comingSoon: true  }
     ],
     "Physics": [
-        { label: "Kinematics" }, 
-        { label: "Newton's Laws & Forces" }, 
-        { label: "Work & Energy" }, 
+        { label: "kinematics" }, 
+        { label: "mechanics" }, 
+        { label: "energy" }, 
         { label: "Momentum & Inertia", comingSoon: true  }
     ],
     "Computer Sc.": [
@@ -47,6 +47,10 @@ document.querySelectorAll(".browse-btn").forEach(btn => {
                 button.classList.add("coming-soon");
                 button.disabled = true;
                 button.title = "Coming Soon!";
+            } else {
+                button.addEventListener("click", () => {
+                    window.location.href = `/chatbot/?subtopic=${encodeURIComponent(label)}`;
+                });
             }
 
             subtopicButtons.appendChild(button);

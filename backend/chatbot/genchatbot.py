@@ -5,9 +5,9 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 
-from model_momentum import predict_driver_momentum
-from model_podium_prediction import predict_driver_podium
-from model_turn_severity import predict_turn_severity
+from ml_models.model_momentum import predict_race_momentum
+from ml_models.model_podium_prediction import predict_driver_podium
+from ml_models.model_turn_severity import predict_turn_severity
 
 # Load environment variables
 load_dotenv()
@@ -81,7 +81,7 @@ def get_chat_response(user_input):
     elif "momentum" in user_input_lower or "form" in user_input_lower:
         driver = extract_driver_name(user_input)
         if driver:
-            return predict_driver_momentum(driver)
+            return predict_race_momentum(driver)
         return "Which driver's momentum are you asking about?"
 
     # Route to turn severity
