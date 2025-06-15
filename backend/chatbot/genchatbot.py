@@ -5,9 +5,9 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 
-from model_momentum_new import predict_race_momentum
-from model_podium_new import predict_driver_podium
-from model_turn_new import predict_turn_severity
+from .model_momentum_new import predict_race_momentum
+from .model_podium_new import predict_driver_podium
+from .model_turn_new import predict_turn_severity
 
 # Load environment variables
 load_dotenv()

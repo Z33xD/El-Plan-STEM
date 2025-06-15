@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'chatbot',
-    'explorer',
     'ml_models',
 ]
 
