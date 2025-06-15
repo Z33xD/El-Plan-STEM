@@ -545,3 +545,21 @@ body,
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
 }
+
+.plain-chat-placeholder {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+  z-index: 5;
+
+  background: linear-gradient(270deg, #3F85CA, #73A6D9, #A7C7E7, #F6F8FF);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 10s ease infinite;
+}
