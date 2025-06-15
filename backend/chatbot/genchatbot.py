@@ -5,9 +5,9 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 
-from ml_models.model_momentum_new import predict_race_momentum
-from ml_models.model_podium_new import predict_driver_podium
-from ml_models.model_turn_new import predict_turn_severity
+from model_momentum_new import predict_race_momentum
+from model_podium_new import predict_driver_podium
+from model_turn_new import predict_turn_severity
 
 # Load environment variables
 load_dotenv()
@@ -52,8 +52,8 @@ chat_session = model.start_chat(history=[])
 # Example driver/circuit lists (expand or pull from DB as needed)
 known_drivers = drivers_collection.aggregate([{ "$sample": { "size": 1 } }]).next()
 driver = drivers_collection.find_one({"driverRef": known_drivers["driverRef"]})
-known_circuits = lap_times_collection.aggregate([{ "$sample": { "size": 1 } }]).next()
-circuit = circuits_collection.find_one({"circuitRef": known_drivers["circuitRef"]})
+known_circuits = circuits_collection.aggregate([{ "$sample": { "size": 1 } }]).next()
+circuit = circuits_collection.find_one({"circuitRef": known_circuits["circuitRef"]})
 
 
 def extract_driver_name(user_input):

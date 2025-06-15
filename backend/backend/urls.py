@@ -28,7 +28,6 @@ urlpatterns = [
     path('', include('core.urls')),
     path('', include('chatbot.urls')),
     path('', include('ml_models.urls')),
-    path('', include('explorer.urls')),
 ]
 
 if settings.DEBUG:
