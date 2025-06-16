@@ -6,7 +6,7 @@ services:
     dockerfilePath: Dockerfile
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: backend.settings
+        value: backend.backend.settings
       - key: DEBUG
         value: "False"
       - key: SECRET_KEY
