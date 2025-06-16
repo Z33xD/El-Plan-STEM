@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: el-plan
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn your_project_name.wsgi:application
