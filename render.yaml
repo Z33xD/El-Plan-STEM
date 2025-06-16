@@ -3,6 +3,7 @@ services:
     name: el-plan
     env: python
     plan: free
+    pythonVersion: "3.11.9"
     buildCommand: |
       pip install --upgrade pip
       pip install -r requirements.txt
