@@ -19,7 +19,6 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from core import views
-from explorer import views
 from ml_models import views
 from chatbot import views
 
@@ -28,7 +27,6 @@ urlpatterns = [
     path('', include('core.urls')),
     path('', include('chatbot.urls')),
     path('', include('ml_models.urls')),
-    path('', include('explorer.urls')),
 ]
 
 if settings.DEBUG:
