@@ -7,6 +7,14 @@ function addMessage(message, sender, isBot) {
     const messageWrapper = document.createElement('div');
     messageWrapper.className = 'message-wrapper ' + (isBot ? 'bot' : 'user');
 
+    if (isBot) {
+        const avatar = document.createElement('img');
+        avatar.className = 'bot-avatar';
+        avatar.src = 'https://i.pinimg.com/236x/9e/c4/a5/9ec4a54f57a449e2442dee76f35109d5.jpg';
+        avatar.alt = 'Bot Avatar';
+        messageWrapper.appendChild(avatar);
+    }
+
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${sender}-message`;
     
@@ -35,11 +43,17 @@ function addMessage(message, sender, isBot) {
 // Show typing indicator
 function showTypingIndicator() {
     const messageWrapper = document.createElement('div');
-    messageWrapper.className = 'message-wrapper';
+    messageWrapper.className = 'message-wrapper bot';
+
+    const avatar = document.createElement('img');
+    avatar.className = 'bot-avatar';
+    avatar.src = 'https://i.pinimg.com/236x/9e/c4/a5/9ec4a54f57a449e2442dee76f35109d5.jpg';
+    avatar.alt = 'Bot Avatar';
+    messageWrapper.appendChild(avatar);
 
     const indicator = document.createElement('div');
-    indicator.className = 'message bot-message typing-indicator';
-    indicator.innerHTML = '<div class="message-content">Typing...</div>';
+    indicator.className = 'typing-indicator';
+    indicator.innerHTML = '<span></span><span></span><span></span>';
     
     messageWrapper.appendChild(indicator);
     chatWindow.appendChild(messageWrapper);
