@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .chatbot import get_chat_response, reset_chat_session
 from .gemini_config import SUBTOPIC_INSTRUCTIONS, DEFAULT_INSTRUCTION
+from .genchatbot import get_chat_response as get_gen_chat_response
 
 
 def chat(request):
@@ -41,6 +42,33 @@ def chat_endpoint(request):
         except Exception as e:
             import traceback
             print("Chat Error:", traceback.format_exc())
+            return JsonResponse({'error': str(e)}, status=500)
+
+    return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+
+
+def general_chat(request):
+    """
+    Renders the general chatbot page.
+    """
+    return render(request, 'genchatbot.html')
+
+
+@csrf_exempt
+def general_chat_endpoint(request):
+    if request.method == 'POST':
+        try:
+            user_message = request.POST.get('message', '').strip()
+            if not user_message:
+                return JsonResponse({'error': 'No message provided'}, status=400)
+
+            response = get_gen_chat_response(user_message)
+            return JsonResponse({'response': response})
+
+        except Exception as e:
+            import traceback
+            print("General Chat Error:", traceback.format_exc())
             return JsonResponse({'error': str(e)}, status=500)
 
     return JsonResponse({'error': 'Method not allowed'}, status=405)
