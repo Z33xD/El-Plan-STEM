@@ -37,7 +37,7 @@ El Plan STEM is a Django-based web application that combines the excitement of F
 
 ---
 
-## 🧪 AI and ML Details
+## AI and ML Details
 
 - Chatbot uses Google's Gemini model for generating and evaluating questions.
 - Semantic search powered by `sentence-transformers` for intelligent data retrieval.
@@ -48,7 +48,7 @@ El Plan STEM is a Django-based web application that combines the excitement of F
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 El-Plan-STEM/
@@ -66,7 +66,7 @@ El-Plan-STEM/
 
 ---
 
-## 🔧 Setup Instructions
+## Setup Instructions
 
 1. **Install Python 3.11**
 
