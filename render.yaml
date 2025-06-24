@@ -9,10 +9,9 @@ services:
         value: "el-plan.onrender.com"
       - key: PORT
         value: "10000"
-    workingDirectory: backend
     buildCommand: |
       pip install --upgrade pip
       pip install -r requirements.txt
-    startCommand: gunicorn backend.wsgi:application --bind 0.0.0.0:${PORT}
+    startCommand: gunicorn backend.backend.wsgi:application --bind 0.0.0.0:${PORT}
     healthCheckPath: "/"
 databases: []
