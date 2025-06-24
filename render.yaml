@@ -3,7 +3,7 @@ services:
     name: el-plan
     plan: free
     runtime: python
-    workingDirectory: backend
+    workingDirectory: backend/backend
     envVars:
       - fromGroup: el-plan-env
       - key: ALLOWED_HOSTS
@@ -13,6 +13,6 @@ services:
     buildCommand: |
       pip install --upgrade pip
       pip install -r requirements.txt
-    startCommand: gunicorn backend.wsgi:application --bind 0.0.0.0:${PORT}
+    startCommand: gunicorn urls:application --bind 0.0.0.0:${PORT}
     healthCheckPath: "/"
 databases: []
