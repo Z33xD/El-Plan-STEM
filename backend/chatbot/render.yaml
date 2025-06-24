@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: el-plan
+    plan: free
+    runtime: python
+    envVars:
+      - key: DEBUG
+        fromSecret: DEBUG
+      - key: DJANGO_SETTINGS_MODULE
+        fromSecret: DJANGO_SETTINGS_MODULE
+      - key: GEMINI_API_KEY
+        fromSecret: GEMINI_API_KEY
+      - key: GEMINI_API_KEY_2
+        fromSecret: GEMINI_API_KEY_2
+      - key: MONGODB_CONNECTION_STRING
+        fromSecret: MONGODB_CONNECTION_STRING
+      - key: SECRET_KEY
+        fromSecret: SECRET_KEY
+      - key: ALLOWED_HOSTS
+        value: "el-plan-stem.onrender.com"
+      - key: PORT
+        value: "10000"
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn backend.core.wsgi:application --bind 0.0.0.0:${PORT}"
+    healthCheckPath: "/"
+databases: []
