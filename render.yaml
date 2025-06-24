@@ -3,6 +3,7 @@ services:
     name: el-plan
     plan: free
     runtime: python
+    pythonVersion: 3.11
     envVars:
       - key: DEBUG
         fromSecret: DEBUG
