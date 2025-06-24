@@ -3,6 +3,7 @@ services:
     name: el-plan
     plan: free
     runtime: python
+    workingDirectory: backend
     envVars:
       - fromGroup: el-plan-env
       - key: ALLOWED_HOSTS
