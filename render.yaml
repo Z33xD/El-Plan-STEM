@@ -4,18 +4,7 @@ services:
     plan: free
     runtime: python
     envVars:
-      - key: DEBUG
-        fromSecret: DEBUG
-      - key: DJANGO_SETTINGS_MODULE
-        fromSecret: DJANGO_SETTINGS_MODULE
-      - key: GEMINI_API_KEY
-        fromSecret: GEMINI_API_KEY
-      - key: GEMINI_API_KEY_2
-        fromSecret: GEMINI_API_KEY_2
-      - key: MONGODB_CONNECTION_STRING
-        fromSecret: MONGODB_CONNECTION_STRING
-      - key: SECRET_KEY
-        fromSecret: SECRET_KEY
+      - fromGroup: el-plan-env
       - key: ALLOWED_HOSTS
         value: "el-plan.onrender.com"
       - key: PORT
